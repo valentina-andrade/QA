@@ -1,159 +1,90 @@
-console.log('Olá, JavaScript!' )
-
-var userName = 'QA'
-
-document.getElementById ('user-name').innerHTML = userName
 
 
-// Variaveis //
+const LIST = [
+    {
+        id: 1,
+        nome: 'Mestre Yoda',
+        avatar: 'images/yoda.png'
+    },
+    {
+        id: 2,
+        nome: 'Luke Skywarker',
+        avatar: 'images/luke.png'
+    },
+    {
+        id: 3,
+        nome: 'Princesa Leia',
+        avatar: 'images/leia.png'
+    },
+    {
+        id: 4,
+        nome: 'Han Solo',
+        avatar: 'images/hansolo.png'
+    },
+    {
+        id: 5,
+        nome: 'Darth Vader',
+        avatar: 'images/vader.png'
+    },
+    {
+        id: 6,
+        nome: 'Chewbacca',
+        avatar: 'images/chewbacca.png'
+    },
+    {
+        id: 7,
+        nome: 'R2D2',
+        avatar: 'images/r2d2.png'
+    },
+    {
+        id: 8,
+        nome: 'C3pO',
+        avatar: 'images/c3po.png'
+    },
+   
+]
+const App = new Vue({
+    el: '#app',
+    data: {
+        title: 'STAR WARS - Lego',
+        userName: 'amigo!!',
+        characters: LIST,
+        searchName: ''
+    },
+    methods:{
+        like(userName) {
+            alert(`O personagem ${userName} recebeu um like!`)
+         },
+         remove(id) {
+            const list = this.characters
 
-var nome = 'Mestre Yoda'
-var idade = 100
-var jedi = true
+            const result = list.filter(item => {
+                return item.id !== id
+            })
 
-// console.log(typeof nome)
-// console.log(typeof idade)
-// console.log(typeof jedi)
+            this.characters = rs
+         },
+         search() {
 
-// Operadores matemáticos//
-
-// var n1 = 5
-// var n2 = 2.50
-
-// console.log(typeof n1)
-// console.log(typeof n2)
-
-// // + para somas
-// // - para subtrair
-// // * para multiplicar
-// // / para dividir
-
-// var total = n1 / n2 
-// console.log(total)
-
-// Operadores de comparação //
-
-// var v1 = 5
-// var v2 = '5'
-
-// var resultado = v1 != v2 
-// console.log(resultado)
-
-// Funçoes //
-
-// function soma(n1, n2) {
-//         console.log(n1 + n2)
-// }
-// soma(5, 5)
-
-// function boasVindas(nome) {
-//     alert(nome + ', seja bem vindo(a)!')
-// }
-// boasVindas('QA')
-
-// function soma(n1, n2) {
-//     return n1 + n2
-// }
-
-// var resultado = soma(5,5)
-// console.log(resultado)
-
-// Controle de Fluxos //
-
-// Sendo um cliente correntista do banco
-// Posso sacar dinheiro em caixas eletrônicos
-// Para poder comprar em liugares que não aceitam o cartão de débito ou crédito
-
-// var saldo = 1000
-
-// function saque(valor){
-//     if (valor > saldo) {
-//     console.log('Atenção, valor do saque superior ao saldo disponível!')
-//     } else if (valor > 700) {
-//         console.log('Atenção, valor do saque superior ao máximo permitido por operação!')
-// } else {
-//     saldo = saldo - valor
-//     }
-// }
-// saque(701)
-// console.log(saldo)
+            if (this.searchName === '') {
+                 return alert('O campo de busca é obrigatório!')
+            }
 
 
-// Cenário 1: Saque com sucesso
-// Dado que meu saldo é de 100 reais
-// Quando faço um saque de 500 reais
-// Então o valor do saque deve ser deduzido do meu saldo
+            const list = this.characters = LIST
 
-// Cenário 2: Saque com valor superior ao saldo
-// Dado que meu saldo é de 1000 reais
-// Quando faço um saque de 1001 reais
-// Então não deve deduzir do meu saldo
-// E deve mostrar a mensagem de alerta informando que o valor é superior ao saldo
+            const result = list.filter(item => {
+                return item.nome === this.searchName
+            })
 
-// Cenário 3: Saque com valor máximo
-// Dado que meu saldo é de 1000 reais
-// E o valor máximo por operação é de 700 reais
-// Quando faço um saque no valor de 701 reais
-// Então não deve deduzir do meu saldo
-// E deve mostrar ma mensagem de alerta informando que o valor é superior ao máximo permitido
+            console.log(this.searchName)
+            console.log(result)
 
-// Arrays //
-
-// var gaveteiro = ['Meias', 'Gravatas', 'Documentos', 'Salgadinhos']
-
-// console.log(gaveteiro[0])
-
-// var personagens = ['Mestre Yoda','Luke Skywalker', 'Princesa Leia', 'Darth Vader']
-// personagens.push('C3pO')
-// personagens.push('R2D2')
-
-// // personagens.pop()
-
-// personagens = personagens.filter(function(p){
-//   return p !== 'Darth Vader'  
-// })
-
-// personagens = personagens.filter(function(p){
-//     return p === 'Mestre Yoda'  
-//   })
-
-// console.log(personagens)
-
-// Controles de repetição (loops) //
-
-// var personagens = ['Mestre Yoda','Luke Skywalker', 'Princesa Leia', 'Darth Vader', 'R2D2']
-
-// // // personagens.forEach(function(p){
-// // //     console.log(p)
-// // // })
-
-// // for (var i in personagens) {
-// //     console.log(personagens[i])
-// // }
-
-// for (var i = 0; i <= 10; i++) {
-//     console.log(i)
-//     // Esse código vai ser executado até a condição retornar false
-// }
-
-// Objetos //
-
-// var yoda = {
-//     nome: 'Mestre Yoda',
-//     idade: 100,
-//     jedi: true,
-//     mostraIdade: function() {
-//     console.log(`A idade do ${this.nome} é de ${this.idade} anos.`)
-//     }
-// }
-
-// console.log(yoda)
-// yoda.mostraIdade()
-
-// Constantes //
-
-const nome = 'Darth Vader'
-console.log(nome)
-
-nome = 'Mestre Yoda'
-console.log(nome)
+            if (result.length <= 0 ) {
+                alert('Nenhum registro encontrado.')
+            } else {
+            this.characters = result
+            }
+         }
+    }
+})
